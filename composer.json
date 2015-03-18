@@ -1,0 +1,26 @@
+{
+    "name": "infinite-networks/api-support-bundle",
+    "description": "Infinite Networks api helpers",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tim Nagel",
+            "email": "t.nagel@infinite.net.au"
+        }
+    ],
+    "require": {
+        "friendsofsymfony/rest-bundle": "~1.5",
+        "infinite-networks/common-bundle": "~1.1",
+        "noxlogic/ratelimit-bundle": "dev-master#86f769af59ba9088d3171c08e50c129760c73c86",
+        "symfony/framework-bundle": "~2.3",
+        "symfony/validator": "~2.3"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": { "Infinite\\ApiSupportBundle\\": "" }
+    }
+}
