@@ -5,7 +5,7 @@
     <services>
         <service id="infinite_api_support.user_provider.api_key" parent="doctrine.orm.security.user.provider" public="false">
             <argument>Infinite\ApiSupportBundle\Entity\ApiUser</argument>
-            <argument>api_key</argument>
+            <argument>key</argument>
         </service>
 
         <service id="infinite_api_support.authenticator.api_key" class="Infinite\ApiSupportBundle\Security\ApiKeyAuthenticator">
