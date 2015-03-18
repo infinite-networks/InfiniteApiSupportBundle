@@ -21,6 +21,7 @@ class InfiniteApiSupportExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('api_key.xml');
         $loader->load('rate_limit.xml');
         $loader->load('request_validation.xml');
         $loader->load('services.xml');

@@ -1,0 +1,15 @@
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="infinite_api_support.user_provider.api_key" parent="doctrine.orm.security.user.provider" public="false">
+            <argument>Infinite\ApiSupportBundle\Entity\ApiUser</argument>
+            <argument>api_key</argument>
+        </service>
+
+        <service id="infinite_api_support.authenticator.api_key" class="Infinite\ApiSupportBundle\Security\ApiKeyAuthenticator">
+            <argument type="service" id="infinite_api_support.user_provider.api_key" />
+        </service>
+    </services>
+</container>
