@@ -20,13 +20,20 @@ class InfiniteApiSupportExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
+        $configuration = $this->getConfiguration($configs, $container);
+        $config = $this->processConfiguration($configuration, $configs);
+
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('api_key.xml');
         $loader->load('rate_limit.xml');
         $loader->load('request_validation.xml');
         $loader->load('services.xml');
 
-        $container->getDefinition('infinite_api_support.listener.rate_limit')->addTag('monolog.logger', array(
+        $rateLimitDefinition = $container->getDefinition('infinite_api_support.listener.rate_limit');
+
+        $rateLimitDefinition->replaceArgument(0, $config['rate_limit_excluded_ips']);
+
+        $rateLimitDefinition->addTag('monolog.logger', array(
             'channel' => $container->getParameter('infinite_api_support.listener.rate_limit.channel')
         ));
     }

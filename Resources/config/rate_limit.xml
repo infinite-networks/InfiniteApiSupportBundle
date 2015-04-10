@@ -10,7 +10,7 @@
 
     <services>
         <service id="infinite_api_support.listener.rate_limit" class="Infinite\ApiSupportBundle\EventListener\RateLimitListener">
-            <argument type="collection">%infinite_api_support.rate_limit.excluded_ips%</argument>
+            <argument><!-- Set by InfiniteApiSupportExtension --></argument>
             <argument type="service" id="logger" on-invalid="null" />
 
             <tag name="kernel.event_listener" event="ratelimit.generate.key" method="setRateLimitKey" />
