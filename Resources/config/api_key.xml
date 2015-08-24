@@ -10,6 +10,7 @@
 
         <service id="infinite_api_support.authenticator.api_key" class="Infinite\ApiSupportBundle\Security\ApiKeyAuthenticator">
             <argument type="service" id="infinite_api_support.user_provider.api_key" />
+            <argument>%infinite_api_support.api_key_realm%</argument>
         </service>
     </services>
 </container>

@@ -36,5 +36,7 @@ class InfiniteApiSupportExtension extends Extension
         $rateLimitDefinition->addTag('monolog.logger', array(
             'channel' => $container->getParameter('infinite_api_support.listener.rate_limit.channel')
         ));
+
+        $container->setParameter('infinite_api_support.api_key_realm', 'Infinite');
     }
 }

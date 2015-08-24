@@ -24,11 +24,21 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationFailureHandlerI
 
 class ApiKeyAuthenticator implements SimplePreAuthenticatorInterface, AuthenticationFailureHandlerInterface
 {
+    /**
+     * @var string
+     */
+    private $realm;
+
     private $userProvider;
 
-    public function __construct(EntityUserProvider $userProvider)
+    /**
+     * @param EntityUserProvider $userProvider
+     * @param string $realm
+     */
+    public function __construct(EntityUserProvider $userProvider, $realm)
     {
         $this->userProvider = $userProvider;
+        $this->realm = $realm;
     }
 
     public function authenticateToken(TokenInterface $token, UserProviderInterface $userProvider, $providerKey)
@@ -57,7 +67,7 @@ class ApiKeyAuthenticator implements SimplePreAuthenticatorInterface, Authentica
             return null;
         }
 
-        $regex = '/Infinite (.*)/';
+        $regex = sprintf('/%s (.*)/', $this->realm);
         if (1 !== preg_match($regex, $request->headers->get('Authorization'), $matches)) {
             throw new BadCredentialsException;
         }
