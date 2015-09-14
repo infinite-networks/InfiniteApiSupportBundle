@@ -45,6 +45,18 @@ class ApiUser implements UserInterface
      */
     private $username;
 
+    /**
+     * @param string $key
+     * @param array $roles
+     * @param string $username
+     */
+    public function __construct($key = null, array $roles = [], $username = null)
+    {
+        $this->key = $key;
+        $this->roles = $roles;
+        $this->username = $username;
+    }
+
     public function eraseCredentials()
     {
     }
