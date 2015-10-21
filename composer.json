@@ -11,7 +11,7 @@
     "require": {
         "friendsofsymfony/rest-bundle": "~1.5",
         "infinite-networks/common-bundle": "~1.1",
-        "noxlogic/ratelimit-bundle": "dev-master#86f769af59ba9088d3171c08e50c129760c73c86",
+        "noxlogic/ratelimit-bundle": "~1.5",
         "symfony/doctrine-bridge": "~2.3",
         "symfony/framework-bundle": "~2.3",
         "symfony/security-http": "~2.3",
