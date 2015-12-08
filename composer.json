@@ -10,7 +10,7 @@
     ],
     "require": {
         "friendsofsymfony/rest-bundle": "~1.5",
-        "infinite-networks/common-bundle": "~1.1",
+        "infinite-networks/common-bundle": "~1.1|~2.0",
         "noxlogic/ratelimit-bundle": "~1.5",
         "symfony/doctrine-bridge": "~2.3",
         "symfony/framework-bundle": "~2.3",
