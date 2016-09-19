@@ -13,6 +13,7 @@ namespace Infinite\ApiSupportBundle\EventListener;
 
 use Infinite\ApiSupportBundle\Controller\ErrorController;
 use Infinite\ApiSupportBundle\Exception\ApiValidationFailureException;
+use Infinite\CommonBundle\Activity\FailedActivityException;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
@@ -48,6 +49,13 @@ class RequestValidationFailureListener
     public function handleValidationFailure(GetResponseForExceptionEvent $event)
     {
         $exception = $event->getException();
+        if (
+            $exception instanceof FailedActivityException &&
+            $exception->getPrevious() instanceof ApiValidationFailureException
+        ) {
+            $exception = $exception->getPrevious();
+        }
+
         if (!$exception instanceof ApiValidationFailureException) {
             return;
         }
