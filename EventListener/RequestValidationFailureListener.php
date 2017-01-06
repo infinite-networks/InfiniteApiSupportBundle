@@ -49,10 +49,8 @@ class RequestValidationFailureListener
     public function handleValidationFailure(GetResponseForExceptionEvent $event)
     {
         $exception = $event->getException();
-        if (
-            $exception instanceof FailedActivityException &&
-            $exception->getPrevious() instanceof ApiValidationFailureException
-        ) {
+
+        while (!$exception instanceof ApiValidationFailureException && $exception->getPrevious()) {
             $exception = $exception->getPrevious();
         }
 
