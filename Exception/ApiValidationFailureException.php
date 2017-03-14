@@ -20,17 +20,19 @@ class ApiValidationFailureException extends \Exception
     private $input;
     private $violations;
 
-    public function __construct($input, ConstraintViolationListInterface $violations)
+    public function __construct($input, ConstraintViolationListInterface $violations, \Exception $previous = null)
     {
+        parent::__construct('', 0, $previous);
+
         $this->input = $input;
         $this->violations = $violations;
     }
 
-    public static function createWithMessage($input, $message, $path = null)
+    public static function createWithMessage($input, $message, $path = null, \Exception $previous = null)
     {
         return new static($input, new ConstraintViolationList(array(
             new Violation($message, $path)
-        )));
+        )), $previous);
     }
 
     /**
