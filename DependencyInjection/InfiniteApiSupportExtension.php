@@ -27,6 +27,7 @@ class InfiniteApiSupportExtension extends Extension
         $loader->load('api_key.xml');
         $loader->load('rate_limit.xml');
         $loader->load('request_validation.xml');
+        $loader->load('security.xml');
         $loader->load('services.xml');
 
         $rateLimitDefinition = $container->getDefinition('infinite_api_support.listener.rate_limit');
