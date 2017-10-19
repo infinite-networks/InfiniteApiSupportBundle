@@ -47,7 +47,7 @@ class RateLimitListener
             // Add a "fake" annotation that doesn't match this request.
             // This will replace any existing annotations and bypass the path check.
             $request->attributes->set('_x-rate-limit', array(
-                new RateLimit(array('methods' => 'nomatch')),
+                new RateLimit(array('methods' => ['nomatch'])),
             ));
         }
     }
