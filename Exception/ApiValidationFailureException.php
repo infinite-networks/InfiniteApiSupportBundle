@@ -12,10 +12,12 @@
 namespace Infinite\ApiSupportBundle\Exception;
 
 use Infinite\ApiSupportBundle\Validation\Violation;
+use Infinite\CommonBundle\Activity\AddContextExceptionInterface;
+use Infinite\CommonBundle\Activity\Context;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
-class ApiValidationFailureException extends \Exception
+class ApiValidationFailureException extends \Exception implements AddContextExceptionInterface
 {
     private $input;
     private $violations;
@@ -33,6 +35,15 @@ class ApiValidationFailureException extends \Exception
         return new static($input, new ConstraintViolationList(array(
             new Violation($message, $path)
         )), $previous);
+    }
+
+    public function addToContext(Context $context)
+    {
+        if (!$this->getViolations()) {
+            return;
+        }
+
+        $context['violations'] = (string) $this->getViolations();
     }
 
     /**
