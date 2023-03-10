@@ -2,20 +2,14 @@
     "name": "infinite-networks/api-support-bundle",
     "description": "Infinite Networks api helpers",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Tim Nagel",
-            "email": "t.nagel@infinite.net.au"
-        }
-    ],
     "require": {
-        "friendsofsymfony/rest-bundle": "~1.5|~2.0",
-        "infinite-networks/common-bundle": "~2.1,>=2.1.5",
-        "noxlogic/ratelimit-bundle": "~1.5",
-        "symfony/doctrine-bridge": "~2.3|~3.0",
-        "symfony/framework-bundle": "~2.3|~3.0",
-        "symfony/security-http": "~2.8|~3.0",
-        "symfony/validator": "~2.3|~3.0"
+        "friendsofsymfony/rest-bundle": ">=2.0",
+        "infinite-networks/common-bundle": "^3.1.0",
+        "noxlogic/ratelimit-bundle": "^1.18",
+        "symfony/doctrine-bridge": "^4.4|^5.4",
+        "symfony/framework-bundle": "^4.4|^5.4",
+        "symfony/security-http": "^4.4|^5.4",
+        "symfony/validator": "^4.4|^5.4"
     },
     "extra": {
         "branch-alias": {
