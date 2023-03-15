@@ -69,7 +69,7 @@ class ApiKeyAuthenticator implements SimplePreAuthenticatorInterface, Authentica
 
         $regex = sprintf('/%s (.*)/', $this->realm);
         if (1 !== preg_match($regex, $request->headers->get('Authorization'), $matches)) {
-            throw new BadCredentialsException;
+            return null;
         }
 
         if (!$matches[1]) {
